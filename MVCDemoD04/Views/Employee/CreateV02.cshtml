@@ -1,0 +1,43 @@
+﻿@model EmployeeCreateVM
+
+<h1 style="color:green; text-align:center">
+    Create New Employee V02
+</h1>
+
+<br />
+<br />
+<hr />
+
+<form action="~/Employee/CreateV02" method="post">
+
+    <div class="form-group mb-3">
+        <label for="Name" class="form-label">Name</label>
+        <input type="text" name="Name" class="form-control" id="Name" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="Age" class="form-label">Age</label>
+        <input type="number" name="Age" class="form-control" id="Age" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="Salary" class="form-label">Salary</label>
+        <input type="number" name="Salary" class="form-control" id="Salary" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="DepartmentId" class="form-label">Department</label>
+        <select class="form-select" id="DepartmentId" name="DepartmentId" required>
+            @foreach (var dept in Model.Departments!)
+            {
+                <option value="@dept.Value">@dept.Text</option>
+            }
+        </select>
+    </div>
+
+    <div class="d-flex justify-content-center gap-3">
+        <input type="submit" class="btn btn-outline-success" value="Create Employee" />
+        <a href="~/Employee/Index" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+
+</form>

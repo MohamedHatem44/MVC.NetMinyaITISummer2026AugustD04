@@ -1,0 +1,50 @@
+@model ICollection<MVCDemoD03.ViewModels.Department.DepartmentReadVM>
+
+<h1 style="color:green; text-align:center">
+    All Departments
+</h1>
+
+<br />
+<br />
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Employees Count</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dept in Model)
+        {
+            <tr>
+                <th>@dept.DepartmentId</th>
+                <td>@dept.Name</td>
+                <td>@dept.EmployeesCount</td>
+                <td>
+                    <a href="~/Department/Details/@dept.DepartmentId" class="btn btn-outline-primary">
+                        View Details
+                    </a>
+                    <a href="~/Department/Edit/@dept.DepartmentId" class="btn btn-outline-secondary">
+                        Edit
+                    </a>
+                    <a href="~/Department/Delete/@dept.DepartmentId" class="btn btn-outline-danger">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">
+                <a href="~/Department/Create" class="btn btn-outline-success">
+                    Create New Department
+                </a>
+            </td>
+        </tr>
+    </tfoot>
+</table>

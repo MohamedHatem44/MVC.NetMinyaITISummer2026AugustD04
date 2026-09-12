@@ -1,0 +1,28 @@
+@model MVCDemoD03.ViewModels.Department.DepartmentEditVM
+
+<h1 style="color:green; text-align:center">
+    Edit Department
+</h1>
+
+<br />
+<br />
+<hr />
+
+<form action="~/Department/Edit" method="post">
+
+    <div class="form-group mb-3">
+        <label for="DepartmentId" class="form-label">Id</label>
+        <input type="number" name="DepartmentId" class="form-control" id="DepartmentId" value="@Model.DepartmentId" readonly />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="Name" class="form-label">Name</label>
+        <input type="text" name="Name" class="form-control" id="Name" value="@Model.Name" />
+    </div>
+
+    <div class="d-flex justify-content-center gap-3">
+        <input type="submit" class="btn btn-outline-success" value="Save" />
+        <a href="~/Department/Index" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+
+</form>
