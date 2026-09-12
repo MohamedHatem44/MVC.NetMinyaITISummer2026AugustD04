@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MVCDemoD03.Models;
+using MVCDemoD04.Models;
 
-namespace MVCDemoD03.Context
+namespace MVCDemoD04.Context
 {
     public class AppDbContext : DbContext
     {

@@ -1,4 +1,4 @@
-@model ICollection<MVCDemoD03.ViewModels.Department.DepartmentReadVM>
+@model IEnumerable<DepartmentReadVM>
 
 <h1 style="color:green; text-align:center">
     All Departments
@@ -11,8 +11,8 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
+            <th scope="col">@Html.DisplayNameFor(d => d.DepartmentId)</th>
+            <th scope="col">@Html.DisplayNameFor(d => d.Name)</th>
             <th scope="col">Employees Count</th>
             <th scope="col">Actions</th>
         </tr>
@@ -25,7 +25,7 @@
                 <td>@dept.Name</td>
                 <td>@dept.EmployeesCount</td>
                 <td>
-                    <a href="~/Department/Details/@dept.DepartmentId" class="btn btn-outline-primary">
+                    @* <a href="~/Department/Details/@dept.DepartmentId" class="btn btn-outline-primary">
                         View Details
                     </a>
                     <a href="~/Department/Edit/@dept.DepartmentId" class="btn btn-outline-secondary">
@@ -33,7 +33,28 @@
                     </a>
                     <a href="~/Department/Delete/@dept.DepartmentId" class="btn btn-outline-danger">
                         Delete
-                    </a>
+                    </a> *@
+
+                    @Html.ActionLink(
+                    "Details",
+                                "Details",
+                                "Department",
+                                new { id = dept.DepartmentId },
+                                new { @class = "btn btn-outline-primary" })
+
+                    @Html.ActionLink(
+                        "Edit",
+                                    "Edit",
+                                    "Department",
+                                    new { id = dept.DepartmentId },
+                                    new { @class = "btn btn-outline-secondary" })
+
+                    @Html.ActionLink(
+                                    "Delete",
+                                    "Delete",
+                                    "Department",
+                                    new { id = dept.DepartmentId },
+                                    new { @class = "btn btn-outline-danger" })
                 </td>
             </tr>
         }

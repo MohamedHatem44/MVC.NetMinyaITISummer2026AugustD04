@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MVCDemoD03.Context;
-using MVCDemoD03.Models;
-using MVCDemoD03.ViewModels.Employee;
+using MVCDemoD04.Context;
+using MVCDemoD04.Models;
+using MVCDemoD04.ViewModels.Employee;
 
-namespace MVCDemoD03.Controllers
+namespace MVCDemoD04.Controllers
 {
     public class EmployeeController : Controller
     {

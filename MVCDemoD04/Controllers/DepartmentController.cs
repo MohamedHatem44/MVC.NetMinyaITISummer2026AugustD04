@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MVCDemoD03.Context;
-using MVCDemoD03.Models;
-using MVCDemoD03.ViewModels.Department;
+using MVCDemoD04.Context;
+using MVCDemoD04.Models;
+using MVCDemoD04.ViewModels.Department;
 
-namespace MVCDemoD03.Controllers
+namespace MVCDemoD04.Controllers
 {
     public class DepartmentController : Controller
     {

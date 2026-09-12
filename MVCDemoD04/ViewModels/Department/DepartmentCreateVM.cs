@@ -1,4 +1,4 @@
-namespace MVCDemoD03.ViewModels.Department
+namespace MVCDemoD04.ViewModels.Department
 {
     public class DepartmentCreateVM
     {

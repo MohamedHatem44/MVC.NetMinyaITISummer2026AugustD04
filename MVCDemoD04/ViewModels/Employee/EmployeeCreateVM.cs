@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace MVCDemoD03.ViewModels.Employee
+namespace MVCDemoD04.ViewModels.Employee
 {
     public class EmployeeCreateVM
     {
