@@ -65,6 +65,13 @@ namespace MVCDemoD04.Controllers
         [HttpPost]
         public IActionResult CreateV01(Employee employee)
         {
+            ModelState.Remove("Department");
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Departments = new SelectList(db.Departments, "DepartmentId", "Name");
+                return View(employee);
+            }
+
             db.Employees.Add(employee);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -84,6 +91,21 @@ namespace MVCDemoD04.Controllers
         [HttpPost]
         public IActionResult CreateV02(EmployeeCreateVM employeeCreateVM)
         {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Please correct the errors and try again.");
+                employeeCreateVM.Departments = GetDepartmentsForDropDown();
+                return View(employeeCreateVM);
+            }
+
+            //var employeeWithSameEmail = db.Employees.FirstOrDefault(e => e.Email == employeeCreateVM.Email);
+            //if (employeeWithSameEmail != null)
+            //{
+            //    ModelState.AddModelError("Email", "Email already exists.");
+            //    employeeCreateVM.Departments = GetDepartmentsForDropDown();
+            //    return View(employeeCreateVM);
+            //}
+
             // Select List => Null
             // Create Domain Model from ViewModel
             var employee = new Employee
@@ -91,6 +113,10 @@ namespace MVCDemoD04.Controllers
                 Name = employeeCreateVM.Name,
                 Age = employeeCreateVM.Age,
                 Salary = employeeCreateVM.Salary,
+                Address = employeeCreateVM.Address,
+                Email = employeeCreateVM.Email,
+                Password = employeeCreateVM.Password,
+                ConfirmPassword = employeeCreateVM.ConfirmPassword,
                 DepartmentId = employeeCreateVM.DepartmentId
             };
 
@@ -106,7 +132,7 @@ namespace MVCDemoD04.Controllers
                 .Include(e => e.Department)
                 .FirstOrDefault(e => e.Id == id);
 
-            if(employee == null)
+            if (employee == null)
             {
                 return NotFound();
             }
@@ -129,7 +155,7 @@ namespace MVCDemoD04.Controllers
         public IActionResult Edit(EmployeeEditVM employeeEditVM)
         {
             var employeeInDB = db.Employees.FirstOrDefault(e => e.Id == employeeEditVM.Id);
-            if(employeeInDB == null)
+            if (employeeInDB == null)
             {
                 return NotFound();
             }
@@ -145,7 +171,7 @@ namespace MVCDemoD04.Controllers
         public IActionResult Delete(int id)
         {
             var employee = db.Employees.FirstOrDefault(e => e.Id == id);
-            if(employee == null)
+            if (employee == null)
             {
                 return NotFound();
             }
@@ -153,6 +179,17 @@ namespace MVCDemoD04.Controllers
             db.Employees.Remove(employee);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        /*------------------------------------------------------------------*/
+        [AcceptVerbs("GET", "POST")]
+        public IActionResult IsEmailAvailabe(string email)
+        {
+            var isFound = db.Employees.Any(e => e.Email == email);
+            if (isFound)
+            {
+                return Json($"Email: {email} already exist");
+            }
+            return Json(true);
         }
         /*------------------------------------------------------------------*/
         // DRY: Don't Repeat Yourself
