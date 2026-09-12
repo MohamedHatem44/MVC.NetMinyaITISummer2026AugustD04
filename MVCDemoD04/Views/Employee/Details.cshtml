@@ -11,8 +11,6 @@
         <h5 class="card-title">Employee Age: @Model.Age</h5>
         <h5 class="card-title">Employee Salary: @Model.Salary</h5>
         <h5 class="card-title">Employee Department: @Model.Department</h5>
-        <a href="~/Employee/Index" class="btn btn-outline-secondary">
-            Back to List
-        </a>
+        <a asp-action="Index" asp-controller="Employee" class="btn btn-outline-secondary">Cancel</a>
     </div>
 </div>

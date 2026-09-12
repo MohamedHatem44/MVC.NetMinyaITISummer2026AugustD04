@@ -29,13 +29,13 @@
                 <td>@emp.Salary</td>
                 <td>@emp.Department</td>
                 <td>
-                    <a href="~/Employee/Details/@emp.Id" class="btn btn-outline-primary">
-                        View Details
+                    <a asp-action="Details" asp-controller="Employee" asp-route-id="@emp.Id" class="btn btn-outline-primary">
+                        Details
                     </a>
-                    <a href="~/Employee/Edit/@emp.Id" class="btn btn-outline-secondary">
+                    <a asp-action="Edit" asp-controller="Employee" asp-route-id="@emp.Id" class="btn btn-outline-secondary">
                         Edit
                     </a>
-                    <a href="~/Employee/Delete/@emp.Id" class="btn btn-outline-danger">
+                    <a asp-action="Delete" asp-controller="Employee" asp-route-id="@emp.Id" class="btn btn-outline-danger">
                         Delete
                     </a>
                 </td>

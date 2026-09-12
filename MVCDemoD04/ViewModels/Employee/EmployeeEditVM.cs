@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel;
 
 namespace MVCDemoD04.ViewModels.Employee
 {
@@ -9,6 +10,7 @@ namespace MVCDemoD04.ViewModels.Employee
         public string? Name { get; set; }
         public int Age { get; set; }
         public decimal Salary { get; set; }
+        [DisplayName("Department")]
         public int DepartmentId { get; set; }
         public string? DepartmentName { get; set; }
         #endregion
